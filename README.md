@@ -2,6 +2,23 @@
 
 This app detects whether an uploaded image is a doctor's prescription using a CoreML model.
 
+flowchart TD
+    A["User taps Upload Image"] --> B["ImagePicker presents"]
+    B --> C["User selects image"]
+    C --> D["ViewModel receives image"]
+    D --> E["ViewModel calls Service"]
+    E --> F["Service runs ML model (GCD background)"]
+    F --> G["Service returns result & confidence"]
+    G --> H["ViewModel updates published properties"]
+    H --> I["SwiftUI View updates UI"]
+    I --> J{"Show"}
+    J -->|"Processing"| K["ProgressView"]
+    J -->|"Result"| L["Result Card: Text, Icon, Confidence Bar"]
+    J -->|"Error"| M["Error Message"]
+    style L fill:#c6f6d5,stroke:#38a169,stroke-width:2px
+    style M fill:#fed7d7,stroke:#e53e3e,stroke-width:2px
+    style K fill:#bee3f8,stroke:#3182ce,stroke-width:2px
+
 ## Architecture
 
 - **SOLID Principles**: The codebase is structured for maintainability and testability.
