@@ -2,17 +2,6 @@
 
 This app detects whether an uploaded image is a doctor's prescription using a CoreML model.
 
-## Architecture
-
-- **SOLID Principles**: The codebase is structured for maintainability and testability.
-  - **Single Responsibility**: Each class (service, view model, view) has a clear responsibility.
-  - **Open/Closed**: The classifier service is protocol-based and can be extended or swapped.
-  - **Liskov Substitution**: The service protocol allows for easy mocking or replacement.
-  - **Interface Segregation**: The protocol is focused and specific.
-  - **Dependency Inversion**: The view model depends on the protocol, not a concrete class.
-
-- **Concurrency with GCD**: Model inference runs on a background thread using Grand Central Dispatch, keeping the UI responsive.
-
 ## Main Components
 
 - `PrescriptionClassifierServiceProtocol` — Protocol for the classifier service.
